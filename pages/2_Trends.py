@@ -15,7 +15,11 @@ time_range = st.sidebar.selectbox(
 )
 
 # Load data
-df = process_data()
+@st.cache_data
+def load_data():
+    return process_data()
+
+df = load_data()
 
 # Filtered data for the selected time range
 if 'Date' in df.columns:
@@ -68,4 +72,3 @@ with col2:
     sleep_hist = px.histogram(filtered_df, x='Sleep_hours', nbins=20, 
                               title="Sleep Hours Distribution")
     st.plotly_chart(sleep_hist)
-

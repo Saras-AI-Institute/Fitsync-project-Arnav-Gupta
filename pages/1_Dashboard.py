@@ -16,7 +16,11 @@ time_range = st.sidebar.selectbox(
 )
 
 # Load data
-df = process_data()
+@st.cache_data
+def load_data():
+    return process_data()
+
+df = load_data()
 
 # Filtered data for the selected time range
 if 'Date' in df.columns:
