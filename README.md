@@ -1,36 +1,53 @@
-# 🚀 Code with AI: FitSync Analytics
+📈 FitSync | Holistic Health Intelligence
+FitSync is a Python-based health analytics platform that bridges the gap between physical biometrics and mental well-being. It combines data from Apple Health (physical) and Daylio (mental) to generate a unified Recovery Score.
 
-Welcome to the **FitSync** project! This repository is your home for the next 5 weeks as we build a professional-grade health analytics dashboard using AI-driven workflows.
+🌐 Live Demo
+Streamlit App
 
-## 📋 Project Basics
-* **Project Title:** FitSync (Personal Health Analytics)
-* **Course:** Code with AI 
-* **Institution:** Saras AI Institute 
+🚀 Key Features
+Unified Dashboard: View physical activity + mental state together
+Trend Analysis: Correlation heatmaps (sleep vs mood, steps vs mood)
+Story Engine: Simulated realistic correlations (demo mode)
+Dynamic Uploads: Upload Apple Health & Daylio CSV files
+Modern UI: Clean interface using Streamlit
+🛠️ Tech Stack
+Language: Python
+Framework: Streamlit
+Data: Pandas, Statsmodels
+Visualization: Plotly
+Environment: GitHub Codespaces
+📁 Project Structure
+.
+├── main.py              # Entry point (Streamlit app)
+├── data/                # CSV storage
+├── modules/             # Backend logic
+│   ├── processor.py
+│   ├── demo_story.py
+│   └── interface.py
+├── pages/               # Multi-page UI
+│   ├── dashboard.py
+│   ├── goals.py
+│   └── trend.py
+├── utils/               # Helper functions
+├── requirements.txt
+🚀 How to Run Locally
+git clone https://github.com/Saras-AI-Institute/Fitsync-project-Archie-Maini.git
+cd Fitsync-project-Archie-Maini
+pip install -r requirements.txt
+streamlit run main.py
+🧠 Core Idea
+The Recovery Score combines:
 
-## 🛠️ Repository Setup & Naming
-**CRITICAL:** When you clone the repository, ensure your repository follows this naming convention:
-`fitsync-project-firstname-lastname`
+Heart Rate
+Sleep Duration
+Mood
+👉 to tell how ready your body & mind are for the day.
 
-## 💻 How to Start (Codespaces)
-We use a cloud-based "AI Cockpit" to ensure a consistent environment for everyone.
-1. Click the green **"<> Code"** button at the top right of this page.
-2. Select the **Codespaces** tab.
-3. Click **"Create codespace on main"**.
-4. Once it loads, ensure the **Continue** extension is active.
+🤖 AI Collaboration
+This project was built using a Human-in-the-loop AI workflow:
 
-## 📅 Weekly Workflow (Update After Each Session)
-You are expected to commit your progress after every live session.
-* **Week 1:** Scaffold folders and generate `health_data.csv`.
-* **Week 2:** Clean data and implement the `Recovery Score` logic.
-* **Week 3:** Build the Streamlit UI and KPI metrics.
-* **Week 4:** Add Plotly visualizations and @st.cache optimization.
-* **Week 5:** Finalize documentation and deploy live.
-
-## 📤 Submission Instructions
-1. Ensure all your changes are pushed to GitHub: `git push origin main`.
-2. Copy the URL of your repository (e.g., `https://github.com/saras-ai/fitsync-project-firstname-lastname`).
-3. Paste this URL into the **Module 1 Assignment** slot in the **LMS (Learning Management System)**.
-4. **Note:** Your code will also be automatically graded via GitHub Actions.
-
----
-*Built with GitHub Copilot & Cursor @ Saras AI Institute*.
+Architecture & logic → Designed manually
+AI tools (Gemini, Copilot) → Used for speed & debugging
+Data pipeline → Custom-built
+👨‍💻 Author
+Archie Maini Software Development Student | Saras AI Institute
