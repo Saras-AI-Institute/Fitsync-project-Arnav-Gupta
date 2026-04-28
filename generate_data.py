@@ -1,35 +1,34 @@
 import pandas as pd
 import numpy as np
+from datetime import timedelta, datetime
+import random
 
-# Set random seed for reproducibility
-np.random.seed(42)
+# Start date
+date_start = datetime(2025, 1, 1)
 
-# Generate date range
-start_date = "2025-01-01"
-dates = pd.date_range(start=start_date, periods=365)
+# Initialize data lists
+dates = [date_start + timedelta(days=i) for i in range(365)]
+steps = np.random.normal(8500, 2500, 365).clip(3000, 18000)
+sleep_hours = np.random.normal(7.2, 1, 365).clip(4.5, 9.5)
+heart_rate_bpm = np.random.normal(68, 10, 365).clip(48, 110)
+calories_burned = np.random.normal(3000, 600, 365).clip(1800, 4200)
+active_minutes = np.random.normal(60, 30, 365).clip(20, 180)
 
-# Generate realistic fitness data
-steps = np.random.normal(loc=8500, scale=2500, size=len(dates)).clip(3000, 18000)
-sleep_hours = np.random.normal(loc=7.2, scale=1.0, size=len(dates)).clip(4.5, 9.5)
-heart_rate_bpm = np.random.normal(loc=68, scale=10, size=len(dates)).clip(48, 110)
-calories_burned = np.random.randint(1800, 4200, size=len(dates))
-active_minutes = np.random.randint(20, 180, size=len(dates))
+# Introduce missing values
+for column in [steps, sleep_hours, heart_rate_bpm, calories_burned, active_minutes]:
+    indices = random.sample(range(365), int(0.05 * 365))
+    for index in indices:
+        column[index] = np.nan
 
 # Create DataFrame
-fitness_data = pd.DataFrame({
+data = pd.DataFrame({
     'Date': dates,
-    'Steps': steps,
-    'Sleep_Hours': sleep_hours,
-    'Heart_Rate_bpm': heart_rate_bpm,
-    'Calories_Burned': calories_burned,
-    'Active_Minutes': active_minutes
+    'Steps': steps.round(),
+    'Sleep_Hours': sleep_hours.round(1),
+    'Heart_Rate_bpm': heart_rate_bpm.round(),
+    'Calories_Burned': calories_burned.round(),
+    'Active_Minutes': active_minutes.round()
 })
 
-# Introduce 5% missing values per column
-for column in fitness_data.columns[1:]:  # Skip 'Date' column
-    fitness_data.loc[fitness_data.sample(frac=0.05).index, column] = np.nan
-
-# Save to CSV in the data folder
-fitness_data.to_csv('data/health_data.csv', index=False)
-
-print('Generated data saved to data/health_data.csv')
+# Save to CSV
+data.to_csv('data/health_data.csv', index=False)
